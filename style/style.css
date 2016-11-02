@@ -1,0 +1,51 @@
+#todoInput {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#delete {
+    text-align: right;
+}
+
+i {
+    padding-right: 20px;
+}
+
+
+#strikeThrough {
+    text-decoration: line-through;
+}
+
+#xEnter {
+    color: red;
+}
+
+.container {
+    margin-top: 35px;
+}
+
+img {
+    width: 60px;
+    margin-right: 10px;
+}
+#react {
+    color: #61dafb;
+    font-weight: 400;
+    text-align: center;
+    font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    line-height: 1.28;
+}
+
+#hero {
+    text-align: center;
+}
+
+
+#activeFooter {
+    color: red;
+}
+
+
+#footerList {
+    font-size: 10px;
+}

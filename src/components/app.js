@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import TodoWrapper from './todos_wrapper';
+
 
 export default class App extends Component {
   render() {
     return (
-      <div>React simple starter</div>
+      <div>
+        <TodoWrapper />
+      </div>
     );
   }
 }
