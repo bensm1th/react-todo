@@ -14,7 +14,7 @@ const Footer = (props) => {
                 className="list-group-item"
             >
                 <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                    {props.activeCount + " "}items active
+                    <span id="activeCount">{props.activeCount + " "}items active</span>
                     <div id="filterTodos" className="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         <button onClick={e=> props.onClick(e, all)} type="button" className="btn btn-secondary" id={activeFooter === all ? "activeFooter" : ""}>All</button>
                         <button onClick={e=> props.onClick(e, active)} type="button" className="btn btn-secondary" id={activeFooter === active ? "activeFooter" : ""}>Active</button>
