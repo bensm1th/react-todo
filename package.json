@@ -2,6 +2,9 @@
   "name": "myreacttodo",
   "version": "1.0.0",
   "description": "react todo list app",
+  "engines": {
+    "node": "6.9.1"
+  },
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
