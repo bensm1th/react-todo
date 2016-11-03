@@ -49,3 +49,8 @@ img {
 #footerList {
     font-size: 10px;
 }
+
+#footerText {
+    text-align: center;
+    font-size: 10px;
+}

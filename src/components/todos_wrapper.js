@@ -270,7 +270,19 @@ export default class TodoWrapper extends Component {
                         activeFooter={this.state.activeFooter}
                         activeCount={this.countActiveTodos()}
                     />
-                </ul>       
+                </ul>  
+                <div className="row">
+                    <div className="col-md-6 offset-md-3" id="footerText">
+                        <div>
+                            Double-click to edit a todo
+                        </div>
+                        <br/>
+                        <div>
+                            Written by Benjamin Smith
+                        </div>
+                        
+                    </div>
+                </div>     
             </div>
         );
     }
