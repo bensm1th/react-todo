@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoListItem from './todo_list_item';
+import EditTodo from './edit_todo';
 
 const CompleteTodo = (props) => {
     let deleteButton;
@@ -22,13 +23,14 @@ const CompleteTodo = (props) => {
         display = (
             <TodoListItem 
                 onMouseEnter={props.onMouseEnter} 
-                onMouseOut={props.onMouseOut}
+                onMouseLeave={props.onMouseLeave}
                 onClick={props.onClick}
                 show={props.show}
                 deleteButton={deleteButton}
                 id={props.id}
                 isCompleted={isCompleted}
                 onDoubleClick={props.onDoubleClick}
+                
             />
         );
     }
@@ -39,6 +41,7 @@ const CompleteTodo = (props) => {
                 onChange={props.onChange}
                 onSubmit={props.onSubmit}
                 id={props.id}
+                onEditLeave={props.onEditLeave}
             />
         );
     }

@@ -2,7 +2,10 @@ import React from 'react';
 
 const EditTodo = (props) => {
     return (
-            <form onSubmit={(e)=> props.onSubmit(e, props.id)}>
+            <form 
+                onSubmit={(e)=> props.onSubmit(e, props.id)}
+                
+            >
                 <div className="input-group input-group-lg">
                     
                     <input 
@@ -10,6 +13,7 @@ const EditTodo = (props) => {
                         aria-describedby="basic-addon1"
                         value={props.value}
                         onChange={(e)=> props.onChange(e.target.value)}
+                        onBlur={(e)=> props.onEditLeave(e, props.id)}
                     />  
                 </div>
             </form>

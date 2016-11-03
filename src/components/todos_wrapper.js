@@ -14,7 +14,8 @@ export default class TodoWrapper extends Component {
             todoList: [],
             editTodo: "",
             showActiveOnly: false,
-            showCompletedOnly: false
+            showCompletedOnly: false,
+            activeFooter: 'all'
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +29,9 @@ export default class TodoWrapper extends Component {
         this.handleDoubleClick = this.handleDoubleClick.bind(this);
         this.handleEditChange = this.handleEditChange.bind(this);
         this.handleEditSubmit = this.handleEditSubmit.bind(this);
+        this.handleShowClick = this.handleShowClick.bind(this);
+        this.handleEditMouseLeave = this.handleEditMouseLeave.bind(this);
+        this.handleClearCompleted = this.handleClearCompleted.bind(this);
     }
     
     handleCompleteAll() {
@@ -54,6 +58,13 @@ export default class TodoWrapper extends Component {
     handleDelete(id) {
         const filtered = this.state.todoList.filter(element=> {
             return element.id !== id;
+        });
+        this.setState({todoList: filtered});
+    }
+
+    handleClearCompleted() {
+        const filtered = this.state.todoList.filter(element=> {
+            return !element.isComplete;
         });
         this.setState({todoList: filtered});
     }
@@ -158,14 +169,31 @@ export default class TodoWrapper extends Component {
         });
     }
 
-    handleShowClick(e) {
-        console.log(e);
+    handleEditMouseLeave(e, id) {
+        this.handleEditSubmit(e, id);
+    }
+
+    handleShowClick(e, type) {
+        if (type === 'clear') {
+            this.handleClearCompleted();
+            return this.setState({activeFooter: 'all'});
+        }
+        this.setState({activeFooter: type});
+    }
+
+    countActiveTodos() {
+        return this.state.todoList.filter(element => {
+            return !element.isComplete;
+        }).length;
     }
 
     createTodos() {
         return this.state.todoList.map((todo)=> {
             if (todo.isComplete  && !todo.isDouble) {
-                return (
+                if (this.state.activeFooter ==="active") {
+                    return;
+                } else {
+                    return (
                     <CompleteTodo
                         show={todo.todo}
                         onClick={this.handleClick}
@@ -183,9 +211,14 @@ export default class TodoWrapper extends Component {
                         editTodo={this.state.editTodo}
                         onChange={this.handleEditChange}
                         onSubmit={this.handleEditSubmit}
+                        onEditLeave={this.handleEditMouseLeave}
                     />
-                )
+                    )
+                }
             } else {
+                if (this.state.activeFooter === 'completed') {
+                    return;
+                } else {
                 return (
                     <Todo 
                         show={todo.todo}
@@ -204,10 +237,11 @@ export default class TodoWrapper extends Component {
                         editTodo={this.state.editTodo}
                         onChange={this.handleEditChange}
                         onSubmit={this.handleEditSubmit}
+                        onEditLeave={this.handleEditMouseLeave}
                     />
-                )
+                    )
+                }
             }
-            
         });
     }
    
@@ -233,6 +267,8 @@ export default class TodoWrapper extends Component {
                     <Footer 
                         todosExist={this.state.todoList.length}
                         onClick={this.handleShowClick}
+                        activeFooter={this.state.activeFooter}
+                        activeCount={this.countActiveTodos()}
                     />
                 </ul>       
             </div>

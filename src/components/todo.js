@@ -29,6 +29,7 @@ const ToDo = (props) => {
                 deleteButton={deleteButton}
                 id={props.id}
                 onDoubleClick={props.onDoubleClick}
+                
             />
         );
     }
@@ -39,6 +40,7 @@ const ToDo = (props) => {
                 onChange={props.onChange}
                 onSubmit={props.onSubmit}
                 id={props.id}
+                onEditLeave={props.onEditLeave}
             />
         );
     }
